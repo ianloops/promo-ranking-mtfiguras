@@ -9,7 +9,7 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<title>Twitter clone</title>
+		<title>MT Figuras e Cards</title>
 		
 		<!-- jquery - link cdn -->
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -58,7 +58,15 @@
 					</div>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" required>
+					<input type="text" name="cpf" class="form-control" id="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Digite o CPF no formato nnn.nnn.nnn-nn" placeholder="CPF">
+					<script>
+						function valida() {
+							if (document.cadastro3.cpf.validity.patternMismatch) {
+								alert("O CPF está incorreto");
+							}
+							return false;
+						}
+					</script>
 						<?php
 							if($erro_cpf){
 								echo '<font style="color:#F00"> CPF já existe</font>';
