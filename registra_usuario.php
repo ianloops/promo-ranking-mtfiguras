@@ -7,7 +7,11 @@
 	$nome = $_POST['nome'];
 	$cpf = $_POST['cpf'];
 	$cep = $_POST['cep'];
-	$endereco = $_POST['endereco'];
+	$num_residencia = $_POST['num_residencia'];
+	$rua = $_POST['rua'];
+	$bairro = $_POST['bairro'];
+	$cidade = $_POST['cidade'];
+	$uf = $_POST['uf'];
 	$telefone = $_POST['telefone'];
 
 	$objDB = new Db();
@@ -48,10 +52,11 @@
 		die();
 	}
 
-	$sql = "insert into usuario(nome, cpf, endereco, telefone, email, cep, senha) values ('$nome', '$cpf', '$endereco', '$telefone', '$email', '$cep', '$senha')";
+	$sql = "insert into usuario(nome, cpf, rua, bairro, cidade, uf, telefone, email, cep, senha, num_residencia) values ('$nome', '$cpf', '$rua', '$bairro', '$cidade', '$uf', '$telefone', '$email', '$cep', '$senha', '$num_residencia')";
 
 	if(mysqli_query($link, $sql)){
 		echo 'Usuário registrado com sucesso!';
+		echo "<a href='index.php' class='btn btn-info'>Página Inicial</a>";
 	} else{
 		echo 'Erro ao registrar o usuário!';
 	}
