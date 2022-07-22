@@ -57,10 +57,15 @@
 						<label>Nome Completo</label>
 						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required="requiored">
 					</div>
+
+					<div class="form-group">
+						<label>Data de Nascimento</label>
+						<input type="date" class="form-control" id="data_nasc" name="data_nasc" required>
+					</div>
 					
 					<div class="form-group">
 					<label>CPF</label>
-					<input type="text" name="cpf" class="form-control" id="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Digite o CPF no formato nnn.nnn.nnn-nn" placeholder="CPF" size="14">
+					<input type="text" name="cpf" class="form-control" id="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Digite o CPF no formato nnn.nnn.nnn-nn" placeholder="CPF" maxlength="14">
 					<script>
 						function valida() {
 							if (document.cadastro3.cpf.validity.patternMismatch) {
@@ -93,28 +98,28 @@
 
 					<div class="form-group">
 						<label>CEP</label>
-						<input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" required size="10" maxlength="9" onblur="pesquisacep(this.value);">
+						<input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" required maxlength="10" maxlength="9" onblur="pesquisacep(this.value);">
 					</div>
 
 					<div class="form-group">
 						<label>UF</label>
-						<input type="text" class="form-control" id="uf" name="uf" placeholder="UF" size="2" required readonly>
+						<input type="text" class="form-control" id="uf" name="uf" placeholder="UF" maxlength="2" required readonly>
 					</div>
 					<div class="form-group">
 						<label>Cidade</label>
-						<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" size="40" required readonly>
+						<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" maxlength="40" required readonly>
 					</div>
 					<div class="form-group">
 						<label>Bairro</label>
-						<input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" size="40" required readonly>
+						<input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" maxlength="40" required readonly>
 					</div>
 					<div class="form-group">
 						<label>Rua</label>
-						<input type="text" class="form-control" id="rua" name="rua" placeholder="Rua" size="60" required readonly>
+						<input type="text" class="form-control" id="rua" name="rua" placeholder="Rua" maxlength="60" required readonly>
 					</div>
 					<div class="form-group">
 						<label>Número da Residência</label>
-						<input type="text" class="form-control" id="num_residencia" name="num_residencia" placeholder="Número da Residência" size="5" required>
+						<input type="text" class="form-control" id="num_residencia" name="num_residencia" placeholder="Número da Residência" maxlength="5" required>
 					</div>
 
 					<div class="form-group">

@@ -2,16 +2,17 @@
 
 	require_once('db.class.php');
 
+	$nome = $_POST['nome'];
+	$data_nasc = $_POST['data_nasc'];
+	$cpf = $_POST['cpf'];
 	$email = $_POST['email'];
 	$senha = md5($_POST['senha']);
-	$nome = $_POST['nome'];
-	$cpf = $_POST['cpf'];
 	$cep = $_POST['cep'];
-	$num_residencia = $_POST['num_residencia'];
-	$rua = $_POST['rua'];
-	$bairro = $_POST['bairro'];
-	$cidade = $_POST['cidade'];
 	$uf = $_POST['uf'];
+	$cidade = $_POST['cidade'];
+	$bairro = $_POST['bairro'];
+	$rua = $_POST['rua'];
+	$num_residencia = $_POST['num_residencia'];
 	$telefone = $_POST['telefone'];
 
 	$objDB = new Db();
@@ -52,7 +53,7 @@
 		die();
 	}
 
-	$sql = "insert into usuario(nome, cpf, rua, bairro, cidade, uf, telefone, email, cep, senha, num_residencia) values ('$nome', '$cpf', '$rua', '$bairro', '$cidade', '$uf', '$telefone', '$email', '$cep', '$senha', '$num_residencia')";
+	$sql = "insert into usuario(nome, data_nasc, cpf, rua, bairro, cidade, uf, telefone, email, cep, senha, num_residencia) values ('$nome', '$data_nasc', '$cpf', '$rua', '$bairro', '$cidade', '$uf', '$telefone', '$email', '$cep', '$senha', '$num_residencia')";
 
 	if(mysqli_query($link, $sql)){
 		echo 'Usuário registrado com sucesso!';

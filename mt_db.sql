@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Jul-2022 às 21:25
+-- Tempo de geração: 21-Jul-2022 às 22:54
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -47,6 +47,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cpf` varchar(11) NOT NULL,
+  `data_nasc` date DEFAULT NULL,
   `num_residencia` varchar(5) NOT NULL,
   `rua` varchar(60) NOT NULL,
   `bairro` varchar(40) NOT NULL,
@@ -92,7 +93,7 @@ ALTER TABLE `figurinha`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

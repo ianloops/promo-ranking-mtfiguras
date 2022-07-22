@@ -71,7 +71,7 @@
 							<form method="post" action="validar_acesso.php" id="formLogin">
 								<div class="form-group">
 									<label>CPF</label>
-									<input type="text" class="form-control" id="campo_cpf" name="cpf" placeholder="CPF" />
+									<input type="text" class="form-control" id="campo_cpf" name="cpf" placeholder="CPF" maxlength="14"/>
 								</div>
 								
 								<div class="form-group">
