@@ -10,6 +10,7 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/styles/styles.css">
 
 		<script type="text/javascript">
 			$(document).ready(function(){
@@ -40,7 +41,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <img src="imagens/logo.jpeg" style="height: 50px; width: 50px;"/>
+	          <img src="assets/images/logo.jpeg" style="height: 50px; width: 50px;"/>
 	        </div>
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
@@ -52,19 +53,19 @@
 	      </div>
 	    </nav>
 
-
+		
 	    <div class="container">
-	    	
-    			<h2>Ranking</h2>
-<!--            <ol id="ranking" class="list-group">	
-                    </ol> -->
-                <table border="1" id="ranking">
-                    <tr>
-                       <th>Posição</th>
-                       <th>Nome</th>
-                       <th>Nº de Códigos</th>
-                    </tr>
-                </table>
+			<div class="jumbotron">
+				
+					<h2>Ranking</h2>
+					<table border="1" id="ranking">
+						<tr>
+						<th>Posição</th>
+						<th>Nome</th>
+						<th>Nº de Códigos</th>
+						</tr>
+					</table>
+			</div>
 		</div>
 
 

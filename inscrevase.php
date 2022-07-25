@@ -16,6 +16,7 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/styles/styles.css">
 	
 	</head>
 
@@ -31,7 +32,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <img src="imagens/logo.jpeg" style="height: 50px; width: 50px;"/>
+	          <img src="assets/images/logo.jpeg" style="height: 50px; width: 50px;"/>
 	        </div>
 	        
 	        <div id="navbar" class="navbar-collapse collapse">

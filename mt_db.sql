@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Jul-2022 às 22:54
+-- Tempo de geração: 25-Jul-2022 às 15:51
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "-03:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -24,6 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `codigos`
+--
+
+CREATE TABLE `codigos` (
+  `id_codigo` int(11) NOT NULL,
+  `codigo` varchar(10) NOT NULL,
+  `cadastrado` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `figurinha`
 --
 
@@ -32,10 +44,6 @@ CREATE TABLE `figurinha` (
   `id_usuario` int(11) NOT NULL,
   `codigo` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `figurinha`
---
 
 -- --------------------------------------------------------
 
@@ -60,12 +68,14 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabelas despejadas
+-- Índices para tabela `codigos`
 --
+ALTER TABLE `codigos`
+  ADD PRIMARY KEY (`id_codigo`);
 
 --
 -- Índices para tabela `figurinha`
@@ -84,16 +94,22 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de tabela `codigos`
+--
+ALTER TABLE `codigos`
+  MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `figurinha`
 --
 ALTER TABLE `figurinha`
-  MODIFY `id_figurinha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_figurinha` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,6 @@
 <?php
 	$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
+	$cadastrado = isset($_GET['cadastrado']) ? $_GET['cadastrado'] : 0;
 ?>
 
 <!DOCTYPE HTML>
@@ -14,6 +15,7 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/styles/styles.css">
 	
 		<script>
 			// código javascript
@@ -55,7 +57,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <img src="imagens/logo.jpeg" style="height: 50px; width: 50px;"/>
+	          <img src="assets/images/logo.jpeg" style="height: 50px; width: 50px;"/>
 	        </div>
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
@@ -101,7 +103,12 @@
 	    <div class="container">
 
 	      <!-- Main component for a primary marketing message or call to action -->
-	      <div class="jumbotron">
+	      <div class="jumbotron ranking">
+			<?php
+			if($cadastrado==1){
+				echo '<font color="#0F0">Usuário cadastrado com sucesso!</font>';
+			}
+			?>
 	        <h1>Promoção Cards Premiados</h1>
 	        <p>Regulamento</p>
 	      </div>

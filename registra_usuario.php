@@ -2,6 +2,11 @@
 
 	require_once('db.class.php');
 
+	session_start();
+
+	unset($_SESSION['usuario']);
+	unset($_SESSION['email']);
+
 	$nome = $_POST['nome'];
 	$data_nasc = $_POST['data_nasc'];
 	$cpf = $_POST['cpf'];
@@ -56,8 +61,17 @@
 	$sql = "insert into usuario(nome, data_nasc, cpf, rua, bairro, cidade, uf, telefone, email, cep, senha, num_residencia) values ('$nome', '$data_nasc', '$cpf', '$rua', '$bairro', '$cidade', '$uf', '$telefone', '$email', '$cep', '$senha', '$num_residencia')";
 
 	if(mysqli_query($link, $sql)){
-		echo 'Usuário registrado com sucesso!';
-		echo "<a href='index.php' class='btn btn-info'>Página Inicial</a>";
+		
+		$sql = "SELECT id_usuario, nome, email FROM usuario WHERE cpf = '$cpf' AND senha = '$senha'";
+		$resultado_id = mysqli_query($link, $sql);
+		$dados_usuario = mysqli_fetch_array($resultado_id);
+
+		$_SESSION['id_usuario'] = $dados_usuario['id_usuario'];
+		$_SESSION['nome'] = $dados_usuario['nome'];
+		$_SESSION['email'] = $dados_usuario['email'];
+		
+		header('Location: home.php');
+		//header('Location: index.php?cadastrado=1');
 	} else{
 		echo 'Erro ao registrar o usuário!';
 	}

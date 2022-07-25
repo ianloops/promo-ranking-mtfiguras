@@ -1,0 +1,35 @@
+body {
+    background-color: #FFF;
+}
+.jumbotron{
+    background-color: #000041;
+}
+.navbar-default, .btn-primary{
+    background-color: #000041;
+}
+.navbar-default .navbar-nav>li>a {
+    color:#FFF;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #FDFF00;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover, .navbar-nav>li>.dropdown-menu{
+    background-color: #FDFF00;
+    color: #000041;
+}
+.jumbotron .h1, .jumbotron, .jumbotron .h2 h1{
+    color: #FDFF00;
+}
+label{
+    color: #000041;
+}
+#ranking{
+    color: #FDFF00;
+}
+.panel-default{
+    background-color: #000041;
+    color: #FDFF00;
+}
+.input-group-btn:last-child>.btn{
+    background-color: #FDFF00;
+}
