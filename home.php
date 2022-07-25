@@ -116,6 +116,11 @@
 	    						<button class="btn btn-default" id="btn_figurinha">Cadastrar</button>
 	    					</span>
 	    				</form>
+						<?php
+							if($_SESSION['erro']){
+								echo '<font style="color:#F00">'.$_SESSION['erro'].'</font>';
+							}
+						?>
 	    			</div>
 
 				<div><h2>Meus códigos</h2><br/><br/></div>
