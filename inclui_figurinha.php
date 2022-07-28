@@ -41,7 +41,7 @@
 		if($codigo_existe==false){
 			$_SESSION['erro'] = "Erro: Código inexistente";
 		}
-		header('Location: inscrevase.php');
+		header('Location: home.php');
 		die();
 	}
 

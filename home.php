@@ -28,6 +28,8 @@
 <html lang="pt">
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>MT Figuras e Cards</title>
 		
@@ -66,6 +68,7 @@
 				atualizafigurinha();
 			});
 		</script>
+		<script type="text/javascript" src="assets/js/html5-qrcode.min.js"></script>
 	
 	</head>
 
@@ -81,7 +84,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <img src="assets/images/logo.jpeg" style="height: 50px; width: 50px;"/>
+	          <img src="assets/images/logo.jpeg" style="height: 10%; width: 10%;"/>
 	        </div>
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
@@ -112,9 +115,16 @@
 	    		<div class="panel panel-default">
 	    			<div class="panel-body jumbotron">
 	    				<form id="form_figurinha" class="input-group">
-	    					<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo">
+							<?php
+							if(isset($_GET['codigo'])){
+								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="'.$_GET['codigo'].'">';
+							} else {
+								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="">';
+							}
+							?>
 	    					<span class="input-group-btn">
-	    						<button class="btn btn-default" id="btn_figurinha">Cadastrar</button>
+								<button class="btn btn-default" id="btn_figurinha">Cadastrar</button>
+								<a href="scan.php" class="btn btn-default">QR Code</a>
 	    					</span>
 	    				</form>
 						<?php
