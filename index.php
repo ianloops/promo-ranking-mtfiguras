@@ -1,6 +1,11 @@
 <?php
 	$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
 	$cadastrado = isset($_GET['cadastrado']) ? $_GET['cadastrado'] : 0;
+
+	session_start();
+	if(isset($_SESSION['nome'])){
+		header('Location: home.php');
+	}
 ?>
 
 <!DOCTYPE HTML>
