@@ -1,7 +1,10 @@
 <?php
+    session_start();
+	if(!isset($_SESSION['id_usuario'])){
+		header('Location: index.php?erro=1');
+	}
 
-	$erro_cpf = isset($_GET['erro_cpf']) ? $_GET['erro_cpf'] : 0;
-	$erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+	$changed = isset($_GET['changed']) ? $_GET['changed'] : 0;
 ?>
 
 <!DOCTYPE HTML>
@@ -39,8 +42,10 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
+                <li><a href="home.php">Início</a></li>
+				<li><a href="account.php">Minha Conta</a></li>
 				<li><a href="ranking.php">Ranking</a></li>
-	            <li><a href="index.php">Voltar para Home</a></li>
+	        	<li><a href="sair.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -50,89 +55,100 @@
 	    <div class="container">
 	    	
 	    	<br /><br />
-
-	    	<div class="col-md-4"></div>
+			<?php
+				switch ($changed){
+					case 1:
+						echo '<font color="#00F">Endereço alterado com Sucesso</font>';
+						break;
+					case 2:
+						echo '<font color="#00F">E-mail alterado com Sucesso</font>';
+						break;
+					case 3:
+						echo '<font color="#00F">Senha alterada com Sucesso</font>';
+						break;
+					case 4:
+						echo '<font color="#00F">Telefone alterado com Sucesso</font>';
+						break;
+					default:
+						break;
+				}
+			?>
+            <h3>Minha Conta</h3>
+	        <br />
 	    	<div class="col-md-4">
-	    		<h3>Inscreva-se já.</h3>
-	    		<br />
 				<form method="post" action="assets/functions/registra_usuario.php" id="formCadastrarse">
 					<div class="form-group">
 						<label>Nome Completo</label>
-						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required="requiored">
+						<input type="text" class="form-control" id="nome" name="nome" value="<?= $_SESSION['nome'] ?>" readonly>
 					</div>
 
 					<div class="form-group">
 						<label>Data de Nascimento</label>
-						<input type="date" class="form-control" id="data_nasc" name="data_nasc" required>
+						<input type="date" class="form-control" id="data_nasc" name="data_nasc" value="<?= $_SESSION['data_nasc'] ?>" readonly>
 					</div>
 					
 					<div class="form-group">
-					<label>CPF</label>
-					<input type="text" name="cpf" class="form-control" id="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Digite o CPF no formato nnn.nnn.nnn-nn" placeholder="CPF" maxlength="14">
-					<script>
-						function valida() {
-							if (document.cadastro3.cpf.validity.patternMismatch) {
-								alert("O CPF está incorreto");
-							}
-							return false;
-						}
-					</script>
-						<?php
-							if($erro_cpf){
-								echo '<font style="color:#F00"> CPF já existe</font>';
-							}
-						?>
+                        <label>CPF</label>
+                        <input type="text" name="cpf" class="form-control" id="cpf" value="<?= $_SESSION['cpf'] ?>" readonly>
 					</div>
 
 					<div class="form-group">
 						<label>E-mail</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
-						<?php
-							if($erro_email){
-								echo '<font style="color:#F00"> Email já existe </font>';
-							}
-						?>
+						<input type="email" class="form-control" id="email" name="email" value="<?= $_SESSION['email'] ?>" readonly>
 					</div>
-					
-					<div class="form-group">
-						<label>Senha</label>
-						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-					</div>
+                </div>
 
+                <div class="col-md-4">
 					<div class="form-group">
 						<label>CEP</label>
-						<input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" required maxlength="10" maxlength="9" onblur="pesquisacep(this.value);">
+						<input type="text" class="form-control" id="cep" name="cep" value="<?= $_SESSION['cep'] ?>" readonly>
 					</div>
 
 					<div class="form-group">
 						<label>UF</label>
-						<input type="text" class="form-control" id="uf" name="uf" placeholder="UF" maxlength="2" required readonly>
+						<input type="text" class="form-control" id="uf" name="uf" value="<?= $_SESSION['uf'] ?>" readonly>
 					</div>
 					<div class="form-group">
 						<label>Cidade</label>
-						<input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" maxlength="40" required readonly>
+						<input type="text" class="form-control" id="cidade" name="cidade" value="<?= $_SESSION['cidade'] ?>" readonly>
 					</div>
 					<div class="form-group">
 						<label>Bairro</label>
-						<input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" maxlength="40" required readonly>
+						<input type="text" class="form-control" id="bairro" name="bairro" value="<?= $_SESSION['bairro'] ?>" readonly>
 					</div>
+                    </div>
+
+                    <div class="col-md-4">
 					<div class="form-group">
 						<label>Rua</label>
-						<input type="text" class="form-control" id="rua" name="rua" placeholder="Rua" maxlength="60" required readonly>
+						<input type="text" class="form-control" id="rua" name="rua" value="<?= $_SESSION['rua'] ?>" readonly>
 					</div>
 					<div class="form-group">
 						<label>Número da Residência</label>
-						<input type="text" class="form-control" id="num_residencia" name="num_residencia" placeholder="Número da Residência" maxlength="5" required>
+						<input type="text" class="form-control" id="num_residencia" name="num_residencia" value="<?= $_SESSION['num_residencia'] ?>" readonly>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group">		
 						<label>Telefone(Whatsapp)</label>
-						<input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
+						<input type="tel" class="form-control" id="telefone" name="telefone" value="<?= $_SESSION['telefone'] ?>" readonly>
 					</div>
-					
-					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
 				</form>
-			</div>
+                <label>Alterações</label>
+            </div>
+            
+            <div class="col-md-1">
+                <a href="change_address.php"><button>Alterar Endereço</button></a>
+            </div>
+            <div class="col-md-1">
+                <a href="change_email.php"><button>Alterar E-mail</button></a>
+            </div>
+            <div class="col-md-1">
+                <a href="change_passwd.php"><button>Alterar Senha</button></a>
+            </div>
+            <div class="col-md-1">
+                <a href="change_tel.php"><button>Alterar Telefone</button></a>
+            </div>
+
 			<div class="col-md-4"></div>
 
 			<div class="clearfix"></div>

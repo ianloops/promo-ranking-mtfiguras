@@ -1,11 +1,19 @@
+<?php
+    session_start();
+	if(!isset($_SESSION['id_usuario'])){
+		header('Location: index.php?erro=1');
+	}
+    $erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+?>
+
 <!DOCTYPE HTML>
-<html lang="pt">
+<html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Ranking - MT Figuras e Cards</title>
+		<title>MT Figuras e Cards</title>
 		
 		<!-- jquery - link cdn -->
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -13,21 +21,6 @@
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/styles/styles.css">
-
-		<script type="text/javascript">
-			$(document).ready(function(){
-				function atualizaRanking(){
-					$.ajax({
-						url :'assets/functions/get_ranking.php',
-						success: function(data){
-							$('#ranking').html(data);
-						}
-					})
-				}
-
-				atualizaRanking();
-			});
-		</script>
 	
 	</head>
 
@@ -48,31 +41,52 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
-			 	<li><a href="index.php">Início</a></li>
+                <li><a href="home.php">Início</a></li>
+				<li><a href="account.php">Minha Conta</a></li>
+				<li><a href="ranking.php">Ranking</a></li>
+	        	<li><a href="sair.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </nav>
 
-		
+
 	    <div class="container">
-			<div class="jumbotron">
-				
-					<h2>Ranking</h2>
-					<table border="1" id="ranking">
-						<tr>
-						<th>Posição</th>
-						<th>Nome</th>
-						<th>Nº de Códigos</th>
-						</tr>
-					</table>
+	    	
+	    	<br /><br />
+
+	    	<div class="col-md-4"></div>
+	    	<div class="col-md-4">
+	    		<h3>Alterar E-mail</h3>
+	    		<br />
+				<form method="post" action="assets/functions/set_email.php" id="formEmail">
+					
+                    <div class="form-group">
+						<label>Novo E-mail</label>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Novo Email" required="requiored">
+						<?php
+							if($erro_email){
+								echo '<font style="color:#F00"> Email já existe </font>';
+							}
+						?>
+					</div>
+					
+					<button type="submit" class="btn btn-primary form-control">Alterar</button>
+				</form>
 			</div>
+			<div class="col-md-4"></div>
+
+			<div class="clearfix"></div>
+			<br />
+			<div class="col-md-4"></div>
+			<div class="col-md-4"></div>
+			<div class="col-md-4"></div>
+
 		</div>
 
 
 	    </div>
 	
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>	
 	</body>
 </html>

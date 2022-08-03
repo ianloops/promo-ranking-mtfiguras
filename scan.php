@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['nome'])){
+	if(!isset($_SESSION['id_usuario'])){
 		header('Location: index.php?erro=1');
 	}
 ?>

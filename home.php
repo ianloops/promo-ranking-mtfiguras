@@ -1,10 +1,10 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['nome'])){
+	if(!isset($_SESSION['id_usuario'])){
 		header('Location: index.php?erro=1');
 	}
 
-	require_once('db.class.php');
+	require_once('assets/functions/db.class.php');
 
 	$objDB = new Db();
 	$link = $objDB->conecta_mysql();
@@ -45,7 +45,7 @@
 				$('#btn_figurinha').click(function(){
 					if($('#codigo').val().length > 0){
 						$.ajax({
-							url: 'inclui_figurinha.php',
+							url: 'assets/functions/inclui_figurinha.php',
 							method: 'post',
 							data: $('#form_figurinha').serialize(),
 							success: function(data){
@@ -58,7 +58,7 @@
 
 				function atualizafigurinha(){
 					$.ajax({
-						url :'get_figurinha.php',
+						url :'assets/functions/get_figurinha.php',
 						success: function(data){
 							$('#figurinhas').html(data);
 						}
@@ -89,8 +89,10 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
-			 	<li><a href="ranking.php">Ranking</a></li>
-	            <li><a href="sair.php">Sair</a></li>
+				<li><a href="home.php">Início</a></li>
+				<li><a href="account.php">Minha Conta</a></li>
+				<li><a href="ranking.php">Ranking</a></li>
+	        	<li><a href="sair.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -117,9 +119,9 @@
 	    				<form id="form_figurinha" class="input-group">
 							<?php
 							if(isset($_GET['codigo'])){
-								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="'.$_GET['codigo'].'">';
+								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="'.$_GET['codigo'].'" readonly>';
 							} else {
-								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="">';
+								echo '<input type="text" class="form-control" placeholder="Digite o código premiado" maxlength="140" id="codigo" name="codigo" value="" readonly>';
 							}
 							?>
 	    					<span class="input-group-btn">

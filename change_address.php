@@ -1,7 +1,8 @@
 <?php
-
-	$erro_cpf = isset($_GET['erro_cpf']) ? $_GET['erro_cpf'] : 0;
-	$erro_email = isset($_GET['erro_email']) ? $_GET['erro_email'] : 0;
+    session_start();
+	if(!isset($_SESSION['id_usuario'])){
+		header('Location: index.php?erro=1');
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -39,8 +40,10 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
+				<li><a href="home.php">Início</a></li>
+				<li><a href="account.php">Minha Conta</a></li>
 				<li><a href="ranking.php">Ranking</a></li>
-	            <li><a href="index.php">Voltar para Home</a></li>
+	        	<li><a href="sair.php">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
@@ -53,51 +56,9 @@
 
 	    	<div class="col-md-4"></div>
 	    	<div class="col-md-4">
-	    		<h3>Inscreva-se já.</h3>
+	    		<h3>Alterar Endereço</h3>
 	    		<br />
-				<form method="post" action="assets/functions/registra_usuario.php" id="formCadastrarse">
-					<div class="form-group">
-						<label>Nome Completo</label>
-						<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required="requiored">
-					</div>
-
-					<div class="form-group">
-						<label>Data de Nascimento</label>
-						<input type="date" class="form-control" id="data_nasc" name="data_nasc" required>
-					</div>
-					
-					<div class="form-group">
-					<label>CPF</label>
-					<input type="text" name="cpf" class="form-control" id="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" title="Digite o CPF no formato nnn.nnn.nnn-nn" placeholder="CPF" maxlength="14">
-					<script>
-						function valida() {
-							if (document.cadastro3.cpf.validity.patternMismatch) {
-								alert("O CPF está incorreto");
-							}
-							return false;
-						}
-					</script>
-						<?php
-							if($erro_cpf){
-								echo '<font style="color:#F00"> CPF já existe</font>';
-							}
-						?>
-					</div>
-
-					<div class="form-group">
-						<label>E-mail</label>
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
-						<?php
-							if($erro_email){
-								echo '<font style="color:#F00"> Email já existe </font>';
-							}
-						?>
-					</div>
-					
-					<div class="form-group">
-						<label>Senha</label>
-						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-					</div>
+				<form method="post" action="assets/functions/set_address.php" id="formAddress">
 
 					<div class="form-group">
 						<label>CEP</label>
@@ -124,13 +85,8 @@
 						<label>Número da Residência</label>
 						<input type="text" class="form-control" id="num_residencia" name="num_residencia" placeholder="Número da Residência" maxlength="5" required>
 					</div>
-
-					<div class="form-group">
-						<label>Telefone(Whatsapp)</label>
-						<input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Telefone" required>
-					</div>
 					
-					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
+					<button type="submit" class="btn btn-primary form-control">Alterar</button>
 				</form>
 			</div>
 			<div class="col-md-4"></div>

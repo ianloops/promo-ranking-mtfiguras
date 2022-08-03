@@ -78,7 +78,7 @@
 						<div class="col-md-12">
 				    		<p>Você possui uma conta?</h3>
 				    		<br />
-							<form method="post" action="validar_acesso.php" id="formLogin">
+							<form method="post" action="assets/functions/validar_acesso.php" id="formLogin">
 								<div class="form-group">
 									<label>CPF</label>
 									<input type="text" class="form-control" id="campo_cpf" name="cpf" placeholder="CPF" maxlength="14"/>
