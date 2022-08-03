@@ -4,7 +4,7 @@
 		header('Location: index.php?erro=1');
 	}
 
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 
     $id_usuario = $_SESSION['id_usuario'];
 	$senha_atual = md5($_POST['senha_atual']);
@@ -37,7 +37,7 @@
 
 		$_SESSION['senha'] = $senha;
 		
-		header('Location: account.php?changed=3');
+		header('Location: ../../account.php?changed=3');
 	} else{
 		echo 'Erro ao alterar a senha!';
 	}

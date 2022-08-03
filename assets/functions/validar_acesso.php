@@ -2,7 +2,7 @@
 	session_start();
 	$_SESSION['erro']='';
 
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 
 	$cpf =  $_POST['cpf'];
 	$senha = md5($_POST['senha']);
@@ -35,7 +35,7 @@
 			$_SESSION['cep'] = $dados_usuario['cep'];
 			$_SESSION['senha'] = $dados_usuario['senha'];
 			
-			header('Location: home.php');
+			header('Location: ../../home.php');
 		}
 	}
 ?>

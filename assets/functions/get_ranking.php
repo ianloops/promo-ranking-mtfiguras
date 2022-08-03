@@ -1,5 +1,5 @@
 <?php
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 	$objDB = new Db();
 	$link = $objDB->conecta_mysql();
 	$i = 0;

@@ -1,6 +1,6 @@
 <?php
 
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 
 	session_start();
 
@@ -80,7 +80,7 @@
 			$_SESSION['cep'] = $dados_usuario['cep'];
 			$_SESSION['senha'] = $dados_usuario['senha'];
 		
-		header('Location: home.php');
+		header('Location: ../../home.php');
 		//header('Location: index.php?cadastrado=1');
 	} else{
 		echo 'Erro ao registrar o usuário!';

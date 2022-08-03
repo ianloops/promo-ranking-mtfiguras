@@ -6,7 +6,7 @@
 		header('Location: index.php?erro=1');
 	}
 
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 
 	$codigo = $_POST['codigo'];
 	$id_usuario = $_SESSION['id_usuario'];
@@ -41,7 +41,7 @@
 		if($codigo_existe==false){
 			$_SESSION['erro'] = "Erro: Código inexistente";
 		}
-		header('Location: home.php');
+		header('Location: ../../home.php');
 		die();
 	}
 

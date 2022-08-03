@@ -3,7 +3,7 @@
 	if(!isset($_SESSION['id_usuario'])){
 		header('Location: index.php?erro=1');
 	}
-	require_once('assets/functions/db.class.php');
+	require_once('db.class.php');
 
     $id_usuario = $_SESSION['id_usuario'];
 	$email = $_POST['email'];
@@ -28,7 +28,7 @@
 
 		$_SESSION['email'] = $email;
 		
-		header('Location: account.php?changed=2');
+		header('Location: ../../account.php?changed=2');
 	} else{
 		echo 'Erro ao alterar o endereço!';
 	}
